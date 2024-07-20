@@ -24,7 +24,7 @@ function Main() {
                 <div class="Top">
                     <h1>Specials</h1>
                         <button class="mybtn">
-                             click me!
+                             Online Menu
                         </button>
                 </div>
                  <div Class="Bottom">
