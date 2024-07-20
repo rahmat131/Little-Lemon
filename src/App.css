@@ -1,9 +1,11 @@
+/*------------------------------------------------ Header */
 *{
     padding: 0;
     margin: 0;
 }
 header { 
     display: flex;
+    font-size: 18px;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
@@ -11,12 +13,14 @@ header {
     height: 80px;
     margin: 0 auto;
     background: #495e57;
+    /* border:  2px solid black; */
 }
 Nav{
     display: flex;
     width: 60%;
     align-items: center;
     justify-content: center;
+    /* border:  2px solid black; */
     margin: 2px 0;
 }
 Nav img{
@@ -44,14 +48,53 @@ Nav li a{
 Nav li Span{
     font-weight: 300;
 }
+/*------------------------------------------------ Header END */
+/*------------------------------------------------ MAIN */
 Main{
     display: flex;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    width: 500px;
+    width: 100%;
+    background-color: #EDEFEE;
 }
-.mainclass{
-    color:  red;
+.Hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    
+}
+.Left p{
+    display:  flex;
+
+    align-items: center;
+    width: 50%;
+    height: 200px;
+}
+.Left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.Left button{
+    width:  180px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F4CE14;
+    font-size: 18px;
+}
+.Left h1{
+    margin: 6px 0;
+}
+.Right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+}
+.Right img{
+    width: 100%;
 }
