@@ -191,7 +191,6 @@ Main{
     align-items: center;
     width: 100%;
     padding: 80px 0;
-   
 }
 .Testmain h1{
     margin: 0 0 30px 0;
@@ -237,14 +236,14 @@ Main{
 .AboutMain{
     width: 100%;
     display: flex;
+    background: #495E57;
     /* justify-content: ; */
 }
 .AboutWrapper{
     display: flex;
-    margin: 100px auto 25px  auto;
+    margin: 100px auto 30px  auto;
     /* flex-direction: column; */
     /* border: 1px solid black; */
-    
     width: 60%;
 }
 .AboutWrapper .Text{
@@ -264,7 +263,6 @@ Main{
 }
 .AboutWrapper .DualImg{
     display: flex;
-    
     position: relative;
     width: 50%;
     /* border: 1px solid green; */
@@ -280,7 +278,69 @@ Main{
 }
 .Image2 {
     position: relative;
-    top: -35%; 
+    top: -35%;
     left: -25%;
     width: 50%;
+}
+/* ------------------------------------ */
+/* ------------------------------------ Footer */
+
+footer{
+    display: flex;
+    width: 100%;
+    background: #D9D9D9;
+}
+footer a{
+    text-decoration:  none;
+    color: black;
+    padding: 10px 0;
+}
+footer h5{
+    /* text-decoration:  none; */
+    font-size: medium;
+    color: #495E57;
+}
+.FooterWrapper{
+    width: 60%;
+    margin: 25px auto;
+    display: flex;
+    /* border: 1px solid black; */
+}
+.First{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: solid 2px yellow; */
+}
+.First img{
+    max-width: 60%;
+    height: 100%;
+}
+.Second{
+    display: flex;
+    margin: 25px 0;
+    width: 25%;
+    height: 200px;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    /* justify-content: space-around; */
+}
+.Third{
+    display: flex;
+    margin: 25px 0;
+    width: 25%;
+    height: 200px;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    /* justify-content: space-around; */
+}
+.Fourth{
+    display: flex;
+    margin: 25px 0;
+    width: 25%;
+    height: 200px;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    /* justify-content: space-around; */
 }
