@@ -11,7 +11,7 @@ function Footer() {
                 <h5>Doormat Navigation</h5>
                 <a href="/about">About Us</a>
                 <a href="/menu">Menu</a>
-                <a href="/reservation">Reservation</a>
+                {/* <a href="/">Reservation</a> */}
                 <a href="/oreder_online">Order Online</a>
                 <a href="/login"><span>Login</span></a>
             </div>
