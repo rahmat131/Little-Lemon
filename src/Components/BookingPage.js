@@ -6,12 +6,15 @@ import Footer from './Footer.js';
 
 const BookingPage = () => {
   return (
-    <div>
+    <div className='BookingText'>
       <Header/>
-      <h1>Book Your Table</h1>
-      <p>Please fill out the form below to make a reservation.</p>
+      <div className='TextWrapper'>
+      <h1>Your Occasion!</h1>
+      <h3>Your Table</h3>
+      <p>Reserve Now!</p>
       <BookingForm />
-      <p>Thank you for booking with us!</p>
+      {/* <p>Thank you for booking with us!</p> */}
+      </div>
       <Footer/>
     </div>
   );
