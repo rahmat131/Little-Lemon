@@ -1,8 +1,13 @@
+import Footer from './Footer';
+import Header from './Header';
 import img1 from './Images/MarioandAdrianb.jpg'
 import img2 from './Images/restaurantchefB.jpg'
 
 function About() {
     return (
+        <div>
+            {/* <Header/> */}
+        
         <div class="AboutMain">
             <div class="AboutWrapper">
                 <div class="Text">
@@ -20,6 +25,8 @@ function About() {
                     </div>
                 </div>
             </div>
+        </div>
+        {/* <Footer/> */}
         </div>
     );
   }
