@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import Reservation from './Components/BookingPage';
 import About from './Components/About';
 import Menu from './Components/Menu';
-import Order from './Components/Order';
+import Order from './Components/DishesPage';
 import Login from './Components/Login';
 import Contact from './Components/Contact';
 import Header from './Components/Header';
@@ -37,14 +37,23 @@ function App() {
        <Router>
         <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/About" element={<div>
+        <Route path="/About" element={
+          <div>
           <Header/>
           <About/>
           <Footer/>
-          </div>} />
+          </div>
+        } />
         <Route path="/Menu" element={<Menu />} />
         <Route path="/reservation" element={<Reservation />} />
-        <Route path="/Order" element={<Order />} />
+        <Route path="/Order" element={
+          <div>
+          <Header/>
+          <Order />
+          {/* <About/> */}
+          <Footer/>
+          </div>  
+        } />
         <Route path="/Login" element={<Login />} />
         <Route path="/Contact" element={<Contact />} />
         {/* <Route path="/Facebook" element={<a href="https://www.facebook.com/"></a>} /> */}
