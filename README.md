@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Little Lemon Restaurant Booking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a booking application for the fictional Little Lemon restaurant. It allows users to reserve tables by selecting a date, time, number of guests, and occasion. The application dynamically fetches available times based on the selected date and prevents double bookings by using simulated APIs.
 
-In the project directory, you can run:
+This project is part of the [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer) course offered on Coursera. It demonstrates skills in React, routing, form handling, and integrating APIs.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Home Page**: Welcome page with navigation links.
+- **Reservation Page**: Allows users to book a table by choosing a date, time, number of guests, and occasion.
+- **Booking Confirmation Page**: Displays a confirmation message after a successful reservation.
+- **Navigation**: Links to other pages like About, Menu, Order Online, Login, and Contact.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React**: JavaScript library for building user interfaces.
+- **React Router**: For handling navigation and routing within the app.
+- **API Simulation**: Provides simulated API functions for fetching available times and submitting bookings.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
 
-### `npm run build`
+- **`src/`**: Contains all the source code for the application.
+  - **`Components/`**: Contains React components for different pages and UI elements.
+    - `Home.js`
+    - `About.js`
+    - `Menu.js`
+    - `BookingPage.js`
+    - `BookingForm.js`
+    - `ConfirmedBooking.js`
+    - `Header.js`
+    - `Footer.js`
+  - **`api.js`**: Simulated API functions for fetching available times and submitting bookings.
+  - **`App.js`**: Main application component with routing setup.
+  - **`index.js`**: Entry point for the React application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Navigate to the Reservation Page**: Click on the "Reservation" link in the navigation menu.
+2. **Fill Out the Booking Form**: Select a date, time, number of guests, and occasion.
+3. **Submit the Form**: Click "Reserve" to submit the booking.
+4. **Confirmation**: If the booking is successful, you will be redirected to the confirmation page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Functions
 
-### `npm run eject`
+- **`fetchAPI(date)`**: Fetches available reservation times for the given date.
+- **`submitAPI(formData)`**: Submits the booking form data and returns `true` if the submission is successful.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Feel free to open issues or submit pull requests if you have suggestions for improvements or find bugs.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-## Learn More
+## Acknowledgments
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was developed as part of the [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer) course on Coursera. Special thanks to the course instructors for their guidance and resources.
