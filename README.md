@@ -51,9 +51,6 @@ This project is part of the [Meta Front-End Developer Professional Certificate](
 
 Feel free to open issues or submit pull requests if you have suggestions for improvements or find bugs.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ## Acknowledgments
 
