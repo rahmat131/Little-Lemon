@@ -7,11 +7,11 @@ import Footer from './Footer.js';
 function Reservation() {
   return (
     <div>
-        <Header/>
+        {/* <Header/> */}
       <h1>Reservation Page</h1>
       <p>Make your reservations here!</p>
       <Booking/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

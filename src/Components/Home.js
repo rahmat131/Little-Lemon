@@ -10,12 +10,12 @@ import BookingPage from './BookingPage.js'
 function Home() {
   return (
     <div>
-      <Header/>
+      {/* <Header/> */}
       <Main/>
       <Testimonials/>
       {/* <BookingPage/> */}
       <About/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

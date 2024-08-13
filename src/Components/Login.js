@@ -6,10 +6,10 @@ import Footer from './Footer.js';
 function Menu() {
   return (
     <div>
-        <Header/>
+        {/* <Header/> */}
       <h1>Account</h1>
       <p>Coming Soon</p>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
