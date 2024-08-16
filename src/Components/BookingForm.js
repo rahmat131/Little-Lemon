@@ -1,25 +1,33 @@
-//-------------------------------Updated-------
-// BookingForm.js
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { fetchAPI } from './api';
+import { fetchAPI, submitAPI } from './api.js';
 
-const BookingForm = ({ submitForm }) => {
+const BookingForm = () => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
   const [availableTimes, setAvailableTimes] = useState([]);
-  const navigate = useNavigate(); // Hook for navigation
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
+  // Fetch available times when the component mounts and when the date changes
   useEffect(() => {
     if (date) {
       const times = fetchAPI(new Date(date));
       setAvailableTimes(times);
-      setTime(times.length > 0 ? times[0] : ''); // Set first available time if any
+      setTime(times.length > 0 ? times[0] : '');
     }
   }, [date]);
 
+  // Update button state based on the number of guests
+  useEffect(() => {
+    if (guests >= 2) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [guests]);
+
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -35,13 +43,14 @@ const BookingForm = ({ submitForm }) => {
       occasion,
     };
 
-    const isSubmitted = submitForm(formData);
+    const isSubmitted = submitAPI(formData);
 
     if (isSubmitted) {
-      navigate('/confirmed'); // Navigate to confirmation page
+      alert(`Your event for ${occasion} has been reserved on ${date} for ${guests} guest/s at ${time} hours`);
     } else {
       alert('Failed to reserve your table. Please try again.');
     }
+
     console.log({ date, time, guests, occasion });
   };
 
@@ -77,7 +86,7 @@ const BookingForm = ({ submitForm }) => {
           )}
         </select>
 
-        <label htmlFor="guests">Number of guests</label>
+        <label htmlFor="guests">Guests</label>
         <input
           className="InpSel"
           type="number"
@@ -87,7 +96,7 @@ const BookingForm = ({ submitForm }) => {
           max="10"
           id="guests"
           value={guests}
-          onChange={(e) => setGuests(e.target.value)}
+          onChange={(e) => setGuests(Number(e.target.value))}
         />
 
         <label htmlFor="occasion">Occasion</label>
@@ -102,12 +111,15 @@ const BookingForm = ({ submitForm }) => {
           <option value="Anniversary">Anniversary</option>
         </select>
 
-        <input className="mySubbtn" type="submit" value="Reserve" />
+        <input
+          className="mySubbtn"
+          type="submit"
+          value="Reserve"
+          disabled={isButtonDisabled}
+        />
       </form>
     </div>
   );
 };
 
 export default BookingForm;
-
-//---------------------------------------------
