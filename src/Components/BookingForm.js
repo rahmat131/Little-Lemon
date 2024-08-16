@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchAPI, submitAPI } from './api.js';
 
 const BookingForm = () => {
@@ -7,32 +8,23 @@ const BookingForm = () => {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
   const [availableTimes, setAvailableTimes] = useState([]);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   // Fetch available times when the component mounts and when the date changes
   useEffect(() => {
     if (date) {
       const times = fetchAPI(new Date(date));
       setAvailableTimes(times);
-      setTime(times.length > 0 ? times[0] : '');
+      setTime(times.length > 0 ? times[0] : ''); // Set the first available time if any
     }
   }, [date]);
-
-  // Update button state based on the number of guests
-  useEffect(() => {
-    if (guests >= 2) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
-  }, [guests]);
 
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (guests < 2) {
-      alert("Reservation is valid for at least 2 people");
+      window.alert('Reservation is valid for at least 2 people');
       return;
     }
 
@@ -46,12 +38,11 @@ const BookingForm = () => {
     const isSubmitted = submitAPI(formData);
 
     if (isSubmitted) {
-      alert(`Your event for ${occasion} has been reserved on ${date} for ${guests} guest/s at ${time} hours`);
+      // alert(`Your event for ${occasion} has been reserved on ${date} for ${guests} guest/s at ${time} hours`);
+      navigate('/confirmed'); // Navigate to ConfirmedBooking page
     } else {
       alert('Failed to reserve your table. Please try again.');
     }
-
-    console.log({ date, time, guests, occasion });
   };
 
   return (
@@ -96,7 +87,7 @@ const BookingForm = () => {
           max="10"
           id="guests"
           value={guests}
-          onChange={(e) => setGuests(Number(e.target.value))}
+          onChange={(e) => setGuests(e.target.value)}
         />
 
         <label htmlFor="occasion">Occasion</label>
@@ -111,12 +102,7 @@ const BookingForm = () => {
           <option value="Anniversary">Anniversary</option>
         </select>
 
-        <input
-          className="mySubbtn"
-          type="submit"
-          value="Reserve"
-          disabled={isButtonDisabled}
-        />
+        <input className="mySubbtn" type="submit" value="Reserve" />
       </form>
     </div>
   );

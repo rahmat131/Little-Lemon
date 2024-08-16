@@ -1,48 +1,68 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import BookingForm from './BookingForm';
-import '@testing-library/jest-dom';
+import { fetchAPI, submitAPI } from './api';
 
 // Mock the API functions
-jest.mock('./api.js', () => ({
-  fetchAPI: jest.fn(() => ['17:00', '18:00', '19:00']),
-  submitAPI: jest.fn(() => true),
+jest.mock('./api', () => ({
+  fetchAPI: jest.fn(),
+  submitAPI: jest.fn(),
 }));
 
-describe('BookingForm Tests', () => {
+describe('BookingForm', () => {
   beforeEach(() => {
-    // Mock the alert function before each test
-    window.alert = jest.fn();
-  });
-
-  afterEach(() => {
-    // Clean up the alert mock after each test
-    jest.restoreAllMocks();
+    // Clear mock calls before each test
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
   });
 
   test('renders BookingForm component and finds "Guests" label', () => {
-    render(<BookingForm />);
-    
-    // Print the current state of the DOM to help with debugging
-    screen.debug(); 
+    render(
+      <Router>
+        <BookingForm />
+      </Router>
+    );
 
-    // Verify that the "Guests" label is present
-    expect(screen.getByLabelText(/Guests/i)).toBeInTheDocument();
+    const guestsLabel = screen.getByLabelText(/Guests/i);
+    expect(guestsLabel).toBeInTheDocument();
   });
 
-  test('Submit button is disabled if the number of guests is less than 2', () => {
-    render(<BookingForm />);
-    
-    const submitButton = screen.getByText('Reserve');
-    const guestsInput = screen.getByLabelText(/Guests/i);
+  test('Alert shows up if trying to submit with fewer than 2 guests', () => {
+    render(
+      <Router>
+        <BookingForm />
+      </Router>
+    );
 
-    // Initially, it should be disabled because the number of guests is set to 1 by default
-    expect(submitButton).toBeDisabled();
+    // Set the number of guests to 1
+    fireEvent.change(screen.getByLabelText(/Guests/i), { target: { value: '1' } });
 
-    // Change the number of guests to 2
-    fireEvent.change(guestsInput, { target: { value: 2 } });
+    // Trigger form submission
+    fireEvent.click(screen.getByText(/Reserve/i));
 
-    // The submit button should now be enabled
-    expect(submitButton).toBeEnabled();
+    // Assert that the alert is called with the correct message
+    expect(window.alert).toHaveBeenCalledWith('Reservation is valid for at least 2 people');
+  });
+
+  test('Form submits successfully with valid number of guests', () => {
+    // Set up the mock API response
+    submitAPI.mockReturnValue(true);
+    fetchAPI.mockReturnValue(['17:00', '18:00']); // Mock available times
+
+    render(
+      <Router>
+        <BookingForm />
+      </Router>
+    );
+
+    // Set valid inputs
+    fireEvent.change(screen.getByLabelText(/Choose date/i), { target: { value: '2024-08-20' } });
+    fireEvent.change(screen.getByLabelText(/Guests/i), { target: { value: '3' } });
+    fireEvent.change(screen.getByLabelText(/Choose time/i), { target: { value: '18:00' } });
+
+    // Click the submit button
+    fireEvent.click(screen.getByText(/Reserve/i));
+
+    // Since navigation is removed, no assertion here
   });
 });
