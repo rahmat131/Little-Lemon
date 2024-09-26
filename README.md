@@ -47,10 +47,6 @@ This project is part of the [Meta Front-End Developer Professional Certificate](
 - **`fetchAPI(date)`**: Fetches available reservation times for the given date.
 - **`submitAPI(formData)`**: Submits the booking form data and returns `true` if the submission is successful.
 
-## Contributing
-
-Feel free to open issues or submit pull requests if you have suggestions for improvements or find bugs.
-
 
 ## Acknowledgments
 
